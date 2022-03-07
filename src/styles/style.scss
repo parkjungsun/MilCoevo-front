@@ -25,6 +25,16 @@ input {
   padding: 0;
 }
 
+.none {
+  display: none;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  width: 280px;
+}
+
 .noblur {
   box-shadow: none !important;
 }

@@ -1,22 +1,32 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { clear } from "@testing-library/user-event/dist/clear";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { clearMember, getMembers } from "../../../modules/members";
 import Header from "../../common/header";
-import Member from "./Member";
+import MemberList from "./MemberList";
 import Register from "./Register";
 
 function Members() {
+    const dispatch = useDispatch();
+
+    const token = useSelector((state) => state.token);
+    const members = useSelector((state) => state.members);
+
+    useEffect(() => {
+        if(token !== "" && token !== "NONE") {
+            dispatch(getMembers(token));
+        }
+        return () => {
+            dispatch(clearMember());
+        };
+    }, [token, dispatch]);
+
     return (
         <>
             <Header />
             <div className="member_container">
                 <div className="term" />
-                <Member />
-                <div className="no_content">
-                    <p>가입된 그룹이 없습니다</p>
-                    <Link to="/group/register" className="atag theme_highlight">
-                        새 그룹 가입하기
-                    </Link>
-                </div>
+                <MemberList members={members} />
             </div>
             <Register />
         </>
