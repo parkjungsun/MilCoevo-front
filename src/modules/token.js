@@ -18,7 +18,7 @@ export const deleteToken = () => async (dispatch) => {
     dispatch(clearToken());
 }
 export const setToken = (token) => ({ type: SET_TOKEN, payload: token });
-export const expireToken = () => ({ type: EXPIRE_TOKEN, payload: "NONE" });
+export const expireToken = () => ({ type: EXPIRE_TOKEN });
 export const clearToken = () => ({ type: CLEAR_TOKEN, payload: "" });
 
 const initialState = "NONE";
@@ -28,7 +28,7 @@ export default function token(state = initialState, action) {
         case SET_TOKEN:
             return action.payload;
         case EXPIRE_TOKEN:
-            return action.payload;
+            return "NONE";
         case CLEAR_TOKEN:
             return action.payload;
         default:

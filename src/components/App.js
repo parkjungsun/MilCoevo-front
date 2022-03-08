@@ -18,7 +18,7 @@ function App() {
         <Route path="/group/:id" element={<Group />} exact={true}/>
         <Route path="/group/create" element={<GroupCreate />} exact={true} />
         <Route path="/group/register" element={<GroupRegister />} exact={true} />
-        <Route path="/member/update" element={<UpdateMember />} exact={true} />
+        <Route path="/member/:id/info" element={<UpdateMember />} exact={true} />
         <Route path="/members" element={<Members />} exact={true} />
         <Route path="/privacyExplain" element={<PrivacyExplain />} exact={true} />
         <Route path="/useExplain" element={<UseExplain />} exact={true} />

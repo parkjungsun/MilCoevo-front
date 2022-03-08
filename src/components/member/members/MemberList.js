@@ -7,9 +7,9 @@ function MemberList({ members }) {
       return <>
         <div className="no_content">
           <p>가입된 그룹이 없습니다</p>
-          <Link to="/group/register" className="atag theme_highlight">
+          <button onClick={() => window.location.replace("/group/register")} className="atag theme_highlight">
               새 그룹 가입하기
-          </Link>
+          </button>
         </div>
       </>;
     } else {

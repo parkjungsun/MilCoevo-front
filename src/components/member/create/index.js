@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
-import { createGroup } from "../../../api/group";
+import { createGroup } from "../../../modules/group";
+import { expireToken } from "../../../modules/token";
 import Header from "../../common/header";
 
 function Create() {
-  const dispatch = useDispatch();
-
   const token = useSelector((state) => state.token);
+  const dispatch = useDispatch();
 
   const [step, setStep] = useState(1);
   const [process, setProcess] = useState(false);
@@ -60,26 +60,34 @@ function Create() {
     }
   }
 
+  const processing = async (token, data) => {
+    const result = await dispatch(createGroup(token, data));
+    if(result.status === 201 || result.status === 204) {
+      setProcess(result.data);
+    } else if (result.status === 401) {
+      dispatch(expireToken());
+    }
+  }
+
   const onSummit = () => {
     if(position.length === 0 || nickname.length === 0) {
       onPositionValidation(position);
       onNicknameValidation(nickname);
     } else if (positionv && nicknamev) {
       const data = {
-        groupname,
-        position,
-        nickname
+        groupName : groupname,
+        position : position,
+        nickname : nickname
       };
-      setProcess(createGroup(token, data));
+      processing(token, data);
     } else {
       alert("입력값을 확인해주세요");
     }
   }
 
   if(process) {
-    return <Navigate to="/members" />;
-  }
-
+    return (<Navigate to="/members" /> );
+  } 
   if (step === 1) {
     return (
       <>
@@ -102,9 +110,9 @@ function Create() {
           <div className="button_form" onClick={() => stepCheck()}>
             <p>계속</p>
           </div>
-          <Link to="/members" className="atag link_form">
+          <button onClick={() => window.location.replace("/members")} className="atag link_form">
             뒤로가기
-          </Link>
+          </button>
         </div>
       </>
     );
@@ -125,7 +133,7 @@ function Create() {
             value={position}
             onChange={onPositionHandler}
           />
-          <p className={groupnamev ? "none" : "error"}>
+          <p className={positionv ? "none" : "error"}>
             한글, 영문, 숫자 조합 3 ~ 20자
           </p>
           <input
@@ -136,8 +144,8 @@ function Create() {
             value={nickname}
             onChange={onNicknameHandler}
           />
-          <p className={groupnamev ? "none" : "error"}>
-            한글, 영문, 숫자 조합 3 ~ 20자
+          <p className={nicknamev ? "none" : "error"}>
+            한글, 영문, 숫자 조합 3 ~ 10자
           </p>
           <div className="button_form" onClick={() => onSummit()}>
             <p>생성하기</p>

@@ -72,15 +72,15 @@ function Login() {
         <div className="container_title abl">
           <h2>MILINEWS</h2>
         </div>
-        <a href={NAVER_AUTH_URL} className="atag social_login">
+        <button onClick={() => window.location.replace(NAVER_AUTH_URL)} className="atag social_login">
           <p>Naver 계정으로 로그인</p>
-        </a>
-        <a href={KAKAO_AUTH_URL} className="atag social_login">
+        </button>
+        <button onClick={() => window.location.replace(KAKAO_AUTH_URL)} className="atag social_login">
           <p>Kakao 계정으로 로그인</p>
-        </a>
-        <a href={GOOGLE_AUTH_URL} className="atag social_login">
+        </button>
+        <button onClick={() => window.location.replace(GOOGLE_AUTH_URL)} className="atag social_login">
           <p>Google 계정으로 로그인</p>
-        </a>
+        </button>
         <div className="login_blank" />
         <div className="straight_line" />
         <div className="login_other">또는</div>
@@ -110,9 +110,9 @@ function Login() {
           <p>로그인</p>
         </div>
         <p className="explain_msg">계정이 없으세요?</p>
-        <Link to="/register" className="atag link_form">
+        <button onClick={() => window.location.replace("/register")} className="atag link_form">
           가입하기
-        </Link>
+        </button>
       </div>
     </>
   );

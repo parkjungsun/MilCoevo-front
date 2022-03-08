@@ -1,4 +1,3 @@
-import { clear } from "@testing-library/user-event/dist/clear";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearMember, getMembers } from "../../../modules/members";

@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 
 import setImg from "../../../image/setting.png";
 
-function Member({member}) {
+function Member({ member }) {
   return (
-    <Link to={"/group/"+member.groupId} className="atag member_block">
+    <div onClick={() => window.location.replace("/group/"+member.groupId)} className="atag member_block">
       <div className="member_block_info">
         <div className="member_info m_sb">
           <p className="member_group_name">{member.groupName}</p>
-          <Link to="/member/update">
+          <div onClick={() => window.location.replace("/member/"+member.groupId+"/info")}>
             <img className="info_img_s" src={setImg} alt="setImg" />
-          </Link>
+          </div>
         </div>
         <div className="member_info">
           <p className="member_id theme_highlight">|</p>
@@ -20,7 +20,7 @@ function Member({member}) {
           <p className="member_id">{member.nickname}</p>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }
 
