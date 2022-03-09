@@ -6,13 +6,15 @@ import members from "./members";
 import token from "./token";
 import group from "./group";
 import keywords from "./keywords";
+import news from "./news";
 
 const rootReducer = combineReducers({
   token,
   members,
   member,
   group,
-  keywords
+  keywords,
+  news
 });
 
 export function* rootSaga() {
