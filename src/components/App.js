@@ -15,7 +15,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/group/:id" element={<Group />} exact={true}/>
+        <Route path="/group/:id" element={<Group />} />
         <Route path="/group/create" element={<GroupCreate />} exact={true} />
         <Route path="/group/register" element={<GroupRegister />} exact={true} />
         <Route path="/member/:id/info" element={<UpdateMember />} exact={true} />

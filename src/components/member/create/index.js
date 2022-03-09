@@ -110,9 +110,9 @@ function Create() {
           <div className="button_form" onClick={() => stepCheck()}>
             <p>계속</p>
           </div>
-          <button onClick={() => window.location.replace("/members")} className="atag link_form">
-            뒤로가기
-          </button>
+          <Link to="/members" className="atag link_form">
+            사용자 홈
+          </Link>
         </div>
       </>
     );

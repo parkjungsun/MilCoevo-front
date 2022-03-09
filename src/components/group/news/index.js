@@ -1,10 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import KeywordBlock from "./KeywordBlock";
 import NewsBlock from "./NewsBlock";
 import ToolBox from "./ToolBox";
 
+import { useParams } from "react-router-dom";
+import { clearKeywords, getKeywords } from "../../../modules/keywords";
+
 function News() {
+  const dispatch = useDispatch();
+
   const [mode, setMode] = useState(1);
+
+  const { id } = useParams();
+  const token = useSelector((state) => state.token);
+  const keywords = useSelector((state) => state.keywords);
+
+  useEffect(() => {
+    if (token !== "" && token !== "NONE") {
+      dispatch(getKeywords());
+    }
+    return () => {
+      dispatch(clearKeywords());
+    };
+  }, [token, dispatch]);
 
   const changeMode = (mod) => {
     setMode(mod);
@@ -17,8 +36,6 @@ function News() {
           <div className="search_condition">
             <p>검색 키워드</p>
             <div className="keyword_box">#국방부</div>
-            <div className="keyword_box">#육군</div>
-            <div className="keyword_box">#군대</div>
           </div>
           <div className="search_condition">
             <select className="search_select">
@@ -38,20 +55,22 @@ function News() {
     );
   }
   if (mode === 2) {
-    return <div className="container noblur">
-      <div className="container_title abl">
+    return (
+      <div className="container noblur">
+        <div className="container_title abl">
           <h3>키워드 관리</h3>
+        </div>
+        <KeywordBlock />
+        <div className="straight_line" />
+        <input className="input_form" placeholder="새 키워드" />
+        <div className="button_form">
+          <p>키워드 추가</p>
+        </div>
+        <div className="atag link_form" onClick={() => changeMode(1)}>
+          뉴스 홈
+        </div>
       </div>
-      <KeywordBlock />
-      <div className="straight_line" />
-      <input className="input_form" placeholder="새 키워드" />
-      <div className="button_form">
-        <p>키워드 추가</p>
-      </div>
-      <div className="atag link_form" onClick={() => changeMode(1)}>
-        뉴스 홈
-      </div>
-    </div>;
+    );
   }
 }
 

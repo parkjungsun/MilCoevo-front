@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearMem, exitMember, getMember } from "../../../modules/member";
 import { Link, useParams } from "react-router-dom";
 import Header from "../../common/header";
-import { clearGroup, getGroup } from "../../../modules/group";
+import { clearGroup, getGroup, updateGroupname, updateInviteCode } from "../../../modules/group";
 import { updateMember } from "../../../modules/member";
+import refreshImg from "../../../image/refresh.png";
 
 function UpdateMember() {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ function UpdateMember() {
 
   const [position, setPosition] = useState(member.position);
   const [nickname, setNickname] = useState(member.nickname);
+  const [groupname, setGroupname] = useState(group.groupName);
 
   const onPositionHandler = (event) => {
     setPosition(event.currentTarget.value);
@@ -27,8 +29,14 @@ function UpdateMember() {
     onNicknameValidation(event.currentTarget.value);
   };
 
+  const onGroupnameHandler = (event) => {
+    setGroupname(event.currentTarget.value);
+    onGroupnameValidation(event.currentTarget.value);
+  };
+
   const [positionv, setPositionv] = useState(true);
   const [nicknamev, setNicknamev] = useState(true);
+  const [groupnamev, setGroupnamev] = useState(true);
 
   const onPositionValidation = (val) => {
     var regExp = /^[가-힣|a-z|A-Z|0-9\s]{3,20}$/;
@@ -38,6 +46,11 @@ function UpdateMember() {
   const onNicknameValidation = (val) => {
     var regExp = /^[가-힣|a-z|A-Z|0-9\s]{3,10}$/;
     setNicknamev(regExp.test(val));
+  };
+
+  const onGroupnameValidation = (val) => {
+    var regExp = /^[가-힣|a-z|A-Z|0-9\s]{3,20}$/;
+    setGroupnamev(regExp.test(val));
   };
 
   const processing = (token, groupId, data) => {
@@ -54,6 +67,27 @@ function UpdateMember() {
         nickname: nickname,
       };
       processing(token, id, data);
+    } else {
+      alert("입력값을 확인해주세요");
+    }
+  };
+
+  const chanageGroupname = (token, groupId, data) => {
+    dispatch(updateGroupname(token, groupId, data));
+  };
+
+  const changeInvitecode = () => {
+    dispatch(updateInviteCode(token, id));
+  }
+
+  const onChangeGroupname = () => {
+    if (groupname.length === 0) {
+      setGroupname(group.groupName);
+    } else if (groupnamev) {
+      const data = {
+        groupName: groupname,
+      };
+      chanageGroupname(token, id, data);
     } else {
       alert("입력값을 확인해주세요");
     }
@@ -79,9 +113,9 @@ function UpdateMember() {
       <>
         <Header />
         <div className="container noblur">
-          <button onClick={() => window.location.replace("/members")} className="atag link_form">
+          <Link to="/members" className="atag link_form">
             사용자 홈
-          </button>
+          </Link>
         </div>
       </>
     );
@@ -90,18 +124,50 @@ function UpdateMember() {
       <>
         <Header />
         <div className="container noblur">
-          <div className="container_title abr">
+          <div
+            className={
+              member.rank === "LEADER"
+                ? "container_title abl"
+                : "container_title abr"
+            }
+          >
             <h3>정보 수정</h3>
-            <p>
+            <p className={member.rank === "LEADER" ? "none" : ""}>
               {group.groupName}
               <br />({group.inviteCode})
             </p>
           </div>
+          <input
+            className={member.rank === "LEADER" ? "input_form" : "none"}
+            type="text"
+            placeholder="그룹 명"
+            maxLength="20"
+            defaultValue={group.groupName}
+            onChange={onGroupnameHandler}
+          />
+          <p className={groupnamev ? "none" : "error"}>
+            한글, 영문, 숫자 조합 3 ~ 20자
+          </p>
+          <div className={member.rank === "LEADER" ? "input_form bg flex_sb refresh_img" : "none"}>
+            <p>{group.inviteCode}</p>
+            <img src={refreshImg} alt="refreshImg" onClick={() => changeInvitecode()}/>
+          </div>
+          <div
+            className={member.rank === "LEADER" ? "button_form" : "none"}
+            onClick={() => onChangeGroupname()}
+          >
+            <p>저장</p>
+          </div>
+
+          <div
+            className={member.rank === "LEADER" ? "straight_line" : "none"}
+          />
+
           <div className="input_form bg">
             <p>{member.email}</p>
           </div>
           <div className="input_form bg">
-            <p>{member.rank === "LEADER" ? "팀장" : "팀원"}</p>
+            <p>{member.rank === "LEADER" ? "관리자" : "사용자"}</p>
           </div>
           <input
             className="input_form"
@@ -128,9 +194,9 @@ function UpdateMember() {
           <div className="button_form" onClick={() => onSummit()}>
             <p>저장</p>
           </div>
-          <button onClick={() => window.location.replace("/members")} className="atag link_form">
+          <Link to="/members" className="atag link_form">
             사용자 홈
-          </button>
+          </Link>
           <div className="group_out" onClick={() => exitGroup()}>
             <p>그룹 탈퇴</p>
           </div>

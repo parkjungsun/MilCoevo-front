@@ -5,12 +5,14 @@ import member from "./member";
 import members from "./members";
 import token from "./token";
 import group from "./group";
+import keywords from "./keywords";
 
 const rootReducer = combineReducers({
   token,
   members,
   member,
-  group
+  group,
+  keywords
 });
 
 export function* rootSaga() {

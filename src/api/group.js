@@ -131,9 +131,87 @@ export const registerGroup = async (token, data) => {
     return await axios
         .post(url, data, { headers })
         .then((response) => {
+            if(response.status === 200) {
+                alert('그룹에 가입되었습니다.');
+                return {
+                    status: 200,
+                    data: true
+                };
+            }
+            if(response.status === 204) {
+                alert('최대 그룹 개수는 5개입니다.');
+                return {
+                    status: 200,
+                    data: true
+                };
+            }
+        })
+        .catch((error) => {
+            if (error.response && error.response.status === 400) {
+                return {
+                    status: 400
+                }
+            }
+            if (error.response && error.response.status === 401) {
+                return {
+                    status: 401
+                }
+            }
             return {
-                status: 200
+                status: 500
             };
+        });
+}
+
+export const updateGroupname = async (token, groupId, data) => {
+    const url = API_BASE_URL + "/api/group/" + groupId + "/name";
+
+    const headers = {
+        Authorization: 'Bearer ' + token
+    }
+
+    return await axios
+        .patch(url, data, { headers })
+        .then((response) => {
+            if(response.status === 200) {
+                return {
+                    status: 200
+                };
+            }
+        })
+        .catch((error) => {
+            if (error.response && error.response.status === 400) {
+                return {
+                    status: 400
+                }
+            }
+            if (error.response && error.response.status === 401) {
+                return {
+                    status: 401
+                }
+            }
+            return {
+                status: 500
+            };
+        });
+}
+
+export const updateInviteCode = async (token, groupId) => {
+    const url = API_BASE_URL + "/api/group/" + groupId + "/code";
+
+    const headers = {
+        Authorization: 'Bearer ' + token
+    }
+
+    return await axios
+        .patch(url, {}, { headers })
+        .then((response) => {
+            if(response.status === 200) {
+                return {
+                    data: response.data.message,
+                    status: 200
+                };
+            }
         })
         .catch((error) => {
             if (error.response && error.response.status === 400) {

@@ -24,17 +24,17 @@ function Register() {
                     <div className="add_item_description">
                         <p>그룹 가입하기</p>
                     </div>
-                    <div onClick={() => window.location.replace("/group/register")} className="add_item">
+                    <Link to="/group/register" className="add_item">
                         <img className="item_img"  src={groupImg} alt="groupImg"/>
-                    </div>
+                    </Link>
                 </div>
                 <div className="add_item_box">
                     <div className="add_item_description">
                         <p>새 그룹 생성</p>
                     </div>
-                    <div onClick={() => window.location.replace("/group/create")} className="add_item">
+                    <Link to="/group/create" className="add_item">
                         <img className="item_img" src={writeImg} alt="writeImg"/>
-                    </div>
+                    </Link>
                 </div>
                 <div className="add_item_box">
                     <div className="add_item_description">

@@ -9,9 +9,9 @@ function UseExplain() {
           <h2>MILINEWS</h2>
           <h3>이용약관</h3>
         </div>
-        <button onClick={() => window.location.replace("/register")} className="atag link_form">
+        <Link to="/register" className="atag link_form">
           뒤로가기
-        </button>
+        </Link>
       </div>
     </>
   );

@@ -114,6 +114,7 @@ $theme_p_color2: #3e3e3e;
     margin: 1px;
   }
   .member_group_name {
+    width: 90%;
     font-size: 20px;
     font-weight: bold;
     color: #000000;
@@ -242,7 +243,7 @@ $theme_p_color2: #3e3e3e;
       width: 90px;
       font-size: 16px;
       font-weight: 500;
-      padding: 3px;
+      padding: 3px 3px 3px 7px;
     }
     span {
       margin-right: 10px;

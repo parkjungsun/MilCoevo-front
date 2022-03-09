@@ -101,6 +101,7 @@ $theme_p_color2: #3e3e3e;
   }
 
   .member_group_name {
+    width: 90%;
     font-size: 18px;
     font-weight: bold;
     color: #000000;
@@ -189,7 +190,7 @@ $theme_p_color2: #3e3e3e;
     margin: 5px;
   }
   .title {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
   }
   .more_news {
@@ -206,12 +207,19 @@ $theme_p_color2: #3e3e3e;
       background-color: $bg_color;
     }
   }
+//  .search_select {
+//    margin-left: 2px;
+//    font-weight: bold;
+//    font-size: 16px;
+//    border: none;
+//    background-color: #f4f4f4;
+//  }
   .search_select {
-    margin-left: 2px;
+    margin: 0px 0px 3px 3px;
     font-weight: bold;
     font-size: 16px;
-    border: none;
-    background-color: #f4f4f4;
+    border: 1px solid $border_color;
+    background-color: #fff;
   }
   .search_box {
     display: flex;
@@ -223,6 +231,7 @@ $theme_p_color2: #3e3e3e;
 
   .group_out {
     margin-top: 50px;
+    margin-bottom: 50px;
     font-size: 16px;
     color: red;
     cursor: pointer;
