@@ -54,7 +54,6 @@ function Register() {
   };
 
   const getGroup = async () => {
-    console.log(1);
     if(invitecode.length === 0) {
       onInvitecodeValidation(invitecode);
     } else if (invitecodev) {

@@ -21,7 +21,9 @@ function ScheduleUpdate({ changeMode, changePage, page }) {
   };
 
   const onCancel = () => {
+    if(window.confirm("취소 하시겠습니까?")) {
       dispatch(updateSchedule(token, id, page, { processStatus: "WITHDRAW" }));
+    }
   }
 
   useEffect(() => {
@@ -42,7 +44,7 @@ function ScheduleUpdate({ changeMode, changePage, page }) {
           <div className="input_form w_s_dt1 bg" >{plusDate(schedule.workDate, 0)}.{plusDay(schedule.workDate, 0)}</div>
           <div className="input_form w_s_dt2 bg" >{getTime(schedule.workDate)}</div>
         </div>
-        <textarea className="textarea_form bg" value={schedule.content} readOnly />
+        <textarea className="textarea_form bg" value={schedule.content} readOnly disabled/>
         <div className="input_form h_dl bg" >
           <img src={peopleImg} alt="" className="fs_sw"/>
           {schedule.drafterPosition} {schedule.drafterNickname}

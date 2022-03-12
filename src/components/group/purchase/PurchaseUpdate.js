@@ -28,7 +28,9 @@ function PurchaseUpdate({ changeMode, changePage, page }) {
   };
 
   const onCancel = () => {
-    dispatch(updatePurchase(token, id, page, { processStatus: "WITHDRAW" }));
+    if(window.confirm("회수 하시겠습니까?")) {
+      dispatch(updatePurchase(token, id, page, { processStatus: "WITHDRAW" }));
+    }
   };
 
   const renderPurpose = (pur) => {
@@ -69,7 +71,7 @@ function PurchaseUpdate({ changeMode, changePage, page }) {
             {plusDay(purchase.purchaseDate, 0)}
           </div>
         </div>
-        <div className="textarea_form bg" value={purchase.content} readOnly />
+        <textarea className="textarea_form bg" value={purchase.content} readOnly />
 
         <div className="pur_item_box">
           <div className="all_center bottom_dash">

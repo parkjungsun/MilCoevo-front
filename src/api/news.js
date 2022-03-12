@@ -108,13 +108,11 @@ export const delKeyword = async (token, groupId, keywordId) => {
     return await axios
         .delete(url, { headers })
         .then((response) => {
-            console.log(response);
             return {
                 status: 200
             };
         })
         .catch((error) => {
-            console.log(error);
             if (error.response && error.response.status === 400) {
                 return {
                     status: 400

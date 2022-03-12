@@ -11,8 +11,10 @@ import schedules from "./schedules";
 import schedule from "./schedule";
 import absences from "./absences";
 import absence from "./absence";
-import purchase from "./purchase";
 import purchases from "./purchases";
+import purchase from "./purchase";
+import notices from "./notices";
+import notice from "./notice";
 
 const rootReducer = combineReducers({
   token,
@@ -26,7 +28,9 @@ const rootReducer = combineReducers({
   absences,
   absence,
   purchases,
-  purchase
+  purchase,
+  notices,
+  notice
 });
 
 export function* rootSaga() {

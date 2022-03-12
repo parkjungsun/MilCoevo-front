@@ -264,6 +264,9 @@ $theme_p_color2: #3e3e3e;
     font-size: 16px;
     color: red;
     cursor: pointer;
+    p {
+      margin: 0px;
+    }
   }
 
   .search_button {
@@ -289,6 +292,7 @@ $theme_p_color2: #3e3e3e;
     p {
       margin-left: 8px;
     }
+    word-break: break-all;
   }
   .list_mid {
     width: 46%;
@@ -296,6 +300,7 @@ $theme_p_color2: #3e3e3e;
     p {
       margin-left: 10px;
     }
+    word-break: break-all;
   }
   .list_rear {
     width: 37%;
@@ -303,6 +308,7 @@ $theme_p_color2: #3e3e3e;
     p {
       margin-right: 8px;
     }
+    word-break: break-all;
   }
   .list_content {
     display: flex;
@@ -365,5 +371,23 @@ $theme_p_color2: #3e3e3e;
   }
   .link_form {
     margin-bottom: 20px;
+  }
+  .search_form {
+    width: 70%;
+    margin: 8px 0px;
+    padding: 3px 6px;
+  }
+  .search_img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25.5px;
+    background-color: $theme_color;
+    img {
+      margin: 0px;
+      width: 10px;
+      height: 10px;
+    }
   }
 }

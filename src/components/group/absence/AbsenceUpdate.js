@@ -25,7 +25,9 @@ function AbsenceUpdate({ changeMode, changePage, page }) {
   };
 
   const onCancel = () => {
-    dispatch(updateAbsence(token, id, page, { processStatus: "WITHDRAW" }));
+    if(window.confirm("취소 하시겠습니까?")) {
+      dispatch(updateAbsence(token, id, page, { processStatus: "WITHDRAW" }));
+    }
   };
 
   const renderReason = (reason) => {
@@ -72,7 +74,7 @@ function AbsenceUpdate({ changeMode, changePage, page }) {
             {plusDate(absence.endDate, 0)}.{plusDay(absence.endDate, 0)}
           </div>
         </div>
-        <div className="textarea_form bg" value={absence.content} readOnly />
+        <textarea className="textarea_form bg" value={absence.content} readOnly disabled/>
         <div className="input_form h_dl bg">
           <img src={peopleImg} alt="" className="fs_sw" />
           {absence.drafterPosition} {absence.drafterNickname}

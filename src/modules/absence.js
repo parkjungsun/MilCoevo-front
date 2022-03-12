@@ -7,7 +7,7 @@ const EXPIRE_TOKEN = "EXPIRE_TOKEN";
 export const getAbsence = (token, groupId, absenceId) => async (dispatch) => {
     const result = await absencesApi.getAbsence(token, groupId, absenceId);
     if (result.status === 200) {
-        dispatch({ type: GET_ABSENCE, payload: result.data });
+      dispatch({ type: GET_ABSENCE, payload: result.data });
     } else if (result.status === 401) {
       dispatch({ type: EXPIRE_TOKEN });
     } else {
