@@ -20,7 +20,7 @@ function ToolBox({ changeMode }) {
             <div className="add_toolbox">
                 <div className="add_item_box">
                     <div className="add_item_description">
-                        <p>사용내역 등록</p>
+                        <p>지출내역 등록</p>
                     </div>
                     <div className="add_item" onClick={() => changeMode(2)}>
                         <img className="item_img"  src={writeImg} alt="writeImg"/>

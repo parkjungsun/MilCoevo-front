@@ -33,7 +33,7 @@ function News() {
   const timeIndexHandler = async (e) => {
     await setTime(e.target.value);
     dispatch(clearNews());
-    dispatch(getNews(token, id, news.index, e.target.value));
+    dispatch(getNews(token, id, 0, e.target.value));
   };
 
   const [wordv, setWordv] = useState(true);
@@ -48,6 +48,7 @@ function News() {
       onWordValidation(word);
     } else if (wordv) {
       dispatch(addKeyword(token, id, { keyword: word }));
+      setWord("");
     } else {
       alert("입력값을 확인해주세요");
     }
@@ -85,8 +86,8 @@ function News() {
         <div className="search_box">
           <div className="search_condition">
             <p>검색 키워드</p>
-            {keywords.map((keyword) => (
-              <div key={keyword.id} className="keyword_box">
+            {keywords.map((keyword, index) => (
+              <div key={index} className="keyword_box">
                 #{keyword.content}
               </div>
             ))}
@@ -127,9 +128,9 @@ function News() {
         <div className="container_title abl">
           <h3>키워드 관리</h3>
         </div>
-        {keywords.map((keyword) => (
+        {keywords.map((keyword, index) => (
           <KeywordBlock
-            key={keyword.id}
+            key={index}
             content={keyword.content}
             delKey={keyword.id}
           />
@@ -140,7 +141,7 @@ function News() {
           type="text"
           placeholder="새 키워드"
           maxLength="10"
-          defaultValue={word}
+          value={word}
           onChange={onWordHandler}
         />
         <p className={wordv ? "none" : "error"}>

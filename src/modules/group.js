@@ -13,7 +13,9 @@ export const getGroup = (token, groupId) => async (dispatch) => {
     const result = await groupApi.getGroup(token, groupId);
     if(result.status === 200) {
         dispatch({ type: GET_GROUP, paylaod: result.data });
-    } else if(result.status === 401) {
+    } else if(result.status === 400) {
+        dispatch({ type: GET_GROUP, paylaod: {groupName: "ERROR", inviteCode: "ERROR"} });
+    }else if(result.status === 401) {
         dispatch({ type: EXPIRE_TOKEN });
     } else {
         dispatch({ type: CLEAR_GROUP });

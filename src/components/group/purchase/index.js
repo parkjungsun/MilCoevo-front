@@ -6,14 +6,38 @@ import PurchaseUpdate from "./PurchaseUpdate";
 
 function Purchase() {
   const [mode, setMode] = useState(1);
+  const [page, setPage] = useState(null);
+  const [now, setNow] = useState(new Date());
+  const [process, setProcess] = useState("SUGGESTED");
 
   const changeMode = (mod) => {
     setMode(mod);
   };
 
-  if (mode === 1) return <PurchaseList changeMode={changeMode} />;
+  const changePage = (pag) => {
+    setPage(pag);
+  };
+
+  if (mode === 1)
+    return (
+      <PurchaseList
+        now={now}
+        setNow={setNow}
+        process={process}
+        setProcess={setProcess}
+        changeMode={changeMode}
+        changePage={changePage}
+      />
+    );
   if (mode === 2) return <PurchaseAdd changeMode={changeMode} />;
-  if (mode === 3) return <PurchaseUpdate changeMode={changeMode} />;
+  if (mode === 3)
+    return (
+      <PurchaseUpdate
+        page={page}
+        changeMode={changeMode}
+        changePage={changePage}
+      />
+    );
 }
 
 export default Purchase;

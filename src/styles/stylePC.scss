@@ -45,7 +45,7 @@ $theme_p_color2: #3e3e3e;
 
   .ment {
     margin-top: 100px;
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
     font-weight: 500;
     color: $theme_p_color;
@@ -254,7 +254,7 @@ $theme_p_color2: #3e3e3e;
     border-left: 4px solid $theme_color;
     p {
       text-align: center;
-      width: 90px;
+      width: 120px;
       font-size: 16px;
       font-weight: 500;
       padding: 3px 3px 3px 7px;
@@ -265,12 +265,23 @@ $theme_p_color2: #3e3e3e;
     }
   }
   .news_img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 5px;
     min-width: 120px;
     width: 120px;
     height: 90px;
     border-radius: 7px;
     background-color: $border_color;
+    p {
+      font-size: 16px;
+      font-style: italic;
+    }
+  }
+  .news_image_url {
+    width: 120px;
+    height: 90px;
   }
   .news_content {
     display: flex;
@@ -280,7 +291,7 @@ $theme_p_color2: #3e3e3e;
     margin: 10px;
   }
   .title {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
   }
   .more_news {
@@ -339,12 +350,26 @@ $theme_p_color2: #3e3e3e;
     font-size: 18px;
     font-weight: bold;
   }
-
+  .list_cancel {
+    text-decoration: line-through;
+  }
   .spbw {
     width: 80%;
     margin: 9px;
     background-color: #fff;
     border-radius: 50px;
     border: 1px solid $thmem_back;
+  }
+
+  .static_box {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+  } 
+  .static_unit {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
   }
 }

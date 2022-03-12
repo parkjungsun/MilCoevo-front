@@ -1,14 +1,18 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 function Nav({ navi, changeNavi }) {
+
+    const member = useSelector((state) => state.member);
+
     return (
         <div className="navigator">
            <p className={navi === 1 ? "nav_item nav_item_on" : "nav_item"} onClick={() => changeNavi(1)}>뉴스</p>
            <p className={navi === 2 ? "nav_item nav_item_on" : "nav_item"} onClick={() => changeNavi(2)}>일정</p>
            <p className={navi === 3 ? "nav_item nav_item_on" : "nav_item"} onClick={() => changeNavi(3)}>휴가</p>
-           <p className={navi === 4 ? "nav_item nav_item_on" : "nav_item"} onClick={() => changeNavi(4)}>예산</p>
+           <p className={navi === 4 ? "nav_item nav_item_on" : "nav_item"} onClick={() => changeNavi(4)}>지출</p>
            <p className={navi === 5 ? "nav_item nav_item_on" : "nav_item"} onClick={() => changeNavi(5)}>공지</p>
-           <p className={navi === 6 ? "nav_item nav_item_on" : "nav_item"} onClick={() => changeNavi(6)}>관리</p>
+           <p className={navi === 6 ? "nav_item nav_item_on" : "nav_item"} onClick={() => changeNavi(6)}>인원</p>
         </div>
     );
 }

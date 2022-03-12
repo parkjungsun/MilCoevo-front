@@ -7,7 +7,7 @@ const EXPIRE_TOKEN = "EXPIRE_TOKEN";
 export const getNews = (token, groupId, index, time) => async (dispatch) => {
     const result = await newsApi.getNews(token, groupId, index, time);
     if(result.status === 200) {
-        dispatch({ type: GET_NEWS, payload: {index: index + 1, timeIndex: time, data:  result.data} });
+        dispatch({ type: GET_NEWS, payload: {index: index + 1, timeIndex: time, data: result.data} });
     } else if(result.status === 401) {
         dispatch({ type: EXPIRE_TOKEN });
     } else {

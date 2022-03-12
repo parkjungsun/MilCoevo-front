@@ -7,6 +7,12 @@ import token from "./token";
 import group from "./group";
 import keywords from "./keywords";
 import news from "./news";
+import schedules from "./schedules";
+import schedule from "./schedule";
+import absences from "./absences";
+import absence from "./absence";
+import purchase from "./purchase";
+import purchases from "./purchases";
 
 const rootReducer = combineReducers({
   token,
@@ -14,7 +20,13 @@ const rootReducer = combineReducers({
   member,
   group,
   keywords,
-  news
+  news,
+  schedules,
+  schedule,
+  absences,
+  absence,
+  purchases,
+  purchase
 });
 
 export function* rootSaga() {

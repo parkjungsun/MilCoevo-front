@@ -35,6 +35,14 @@ input {
   width: 280px;
 }
 
+.errort {
+  text-align: left !important;
+  color: red;
+  font-size: 14px;
+  width: 280px;
+  margin: 3px !important;
+}
+
 .noblur {
   box-shadow: none !important;
 }
@@ -190,6 +198,12 @@ input {
   display: flex;
 }
 
+.fs_sw {
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+}
+
 .refresh_img {
   align-items: center;
   justify-content: space-between;
@@ -286,6 +300,17 @@ input {
   margin: 5px;
 }
 
+.in_select_form { 
+  width: 135px;
+  height: 45px;
+  font-size: 13px;
+  border: 1px solid $theme_color;
+  background-color: #fff;
+  border-radius: 7px;
+  padding: 8px 12px;
+  margin: 5px;
+}
+
 .date_time1 {
   width: 126px;
   height: 27px;
@@ -310,6 +335,23 @@ input {
   margin-left: 4px;
   margin-top: 5px;
   margin-bottom: 5px;
+}
+
+.w_s_dt1 {
+  width: 117px !important;
+}
+
+.w_s_dt2 {
+  width: 88px !important;
+}
+
+.w_s_dt {
+  width: 102px !important;
+}
+
+.h_dl {
+  padding: 6px 16px;
+  height: 33px;
 }
 
 .button_form {
@@ -377,6 +419,12 @@ input {
   justify-content: space-between;
 }
 
+.all_center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .member_exit {
   border-radius: 7px;
   padding: 2px 5px 2px 5px;
@@ -429,4 +477,118 @@ input {
 
 .delete_button::after {
   content: "\d7";
+}
+
+.purchase_boxs {
+  text-align: left;
+  display: flex;
+  align-items: center;
+  margin: 10px;
+}
+.purchase_box {
+  display: flex;
+  padding: 1px 0px;
+}
+.pur_box {
+    border-radius: 5px;
+    color: $theme_p_color;
+    border: 1px solid $theme_color;
+  padding: 5px;
+  margin: 1px 3px;
+  font-size: 12px;
+}
+.pf {
+  width: 220px;
+}
+.lf {
+  width: 150px;
+}
+.rf {
+  width: 52px;
+}
+.talc {
+  text-align: center;
+  cursor: pointer;
+  &:hover {
+    background-color: $bg_color;
+    color: #1a928b;
+    font-weight: bold;
+  }
+}
+.purchase_add{
+  padding: 18px 7px;
+  margin: 0px 5px;
+  border: 1px solid $thmem_back;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  color: $theme_p_color;
+  background-color: $thmem_back;
+  cursor: pointer;
+  &:hover {
+    background-color: $border_color;
+    color: $theme_p_color2;
+  }
+}
+
+.pur_item_box {
+  width: 278px;
+  margin-top: 5px;
+  border-bottom: 1px solid $theme_color;
+  border-top: 1px solid $theme_color;
+}
+
+.pur_text {
+  margin: 2px 0px 2px 5px !important;
+  font-size: 14px !important;
+  color: $theme_p_color2 !important;
+}
+
+.pur_one {
+  padding-left: 5px;
+  width: 125px;
+  font-size: 14px;
+  word-break:  break-all;
+  color: $theme_p_color2;
+}
+
+.pur_two {
+  width: 48px;
+  font-size: 14px;
+  white-space: normal;
+  word-break:  break-all;
+  color: $theme_p_color2;
+  text-align: right;
+}
+
+.pur_three {
+  width: 80px;
+  font-size: 14px;
+  white-space: normal;
+  word-break:  break-all;
+  color: $theme_p_color2;
+  text-align: right;
+}
+
+.pur_sum {
+  padding: 7px 0px;
+  border-bottom: 1px dashed $border_color;
+}
+
+.del_img {
+  width: 12px;
+  height: 12px;
+  cursor: pointer;
+}
+
+.bottom_dash {
+  border-bottom: 1px dashed $border_color;
+}
+
+.tex_lef {
+  text-align: left !important;
+}
+
+.tex_cen {
+  text-align: center !important;
 }

@@ -1,12 +1,40 @@
 import React from "react";
+import { getTime } from "../../../utils/dateUtil";
 
-function ScheduleBox({ changeMode }) {
+function ScheduleBox({
+  changeMode,
+  workDate,
+  title,
+  position,
+  nickname,
+  processStatus,
+  scheduleId,
+  changePage
+}) {
+
+  const moveToPage = () => {
+    changePage(scheduleId);
+    changeMode(3);
+  }
+
   return (
     <>
-      <div className="list_block" onClick={() => changeMode(3)}>
-        <div className="list_front list_content"><p>14:00</p></div>
-        <div className="list_mid list_content list_cancel"><p>프로젝트 전체 회의</p></div>
-        <div className="list_rear list_content"><p>프로젝트 매니저 박정선</p></div>
+      <div className="list_block" onClick={() => moveToPage()}>
+        <div className="list_front list_content">
+          <p>{getTime(workDate)}</p>
+        </div>
+        <div
+          className={
+            processStatus === "SUGGESTED"
+              ? "list_mid list_content "
+              : "list_mid list_content list_cancel"
+          }
+        >
+          <p>{title}</p>
+        </div>
+        <div className="list_rear list_content">
+          <p>{position} {nickname}</p>
+        </div>
       </div>
     </>
   );
