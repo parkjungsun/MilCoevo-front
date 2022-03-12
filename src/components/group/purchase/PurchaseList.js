@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import purchase from "../../../modules/purchase";
 import { clearPurchases, getPurchases } from "../../../modules/purchases";
 import {
   frontMonth,
@@ -108,53 +107,131 @@ function PurchaseList({
           </div>
         </div>
         <div className="search_condition">
-          <select 
+          <select
             className="search_select"
             onChange={processHandler}
-            value={process}>
-            <option value="">반영된 지출</option>
-            <option value="">취소된 지출</option>
+            defaultValue={process}
+          >
+            <option value="SUGGESTED">반영된 지출</option>
+            <option value="WITHDRAW">취소된 지출</option>
           </select>
         </div>
       </div>
       <div className="static_box">
-        <div className="static_unit">
+        <div className="static_unit full_unit">
           <p>총 지출</p>
-          <p>{purchases.total ? (purchases.total + "").replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") : 0}</p>
+          <p>
+            {purchases.total
+              ? (purchases.total + "").replace(
+                  /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
+                  ","
+                )
+              : 0}원
+          </p>
         </div>
         <div className="static_unit">
           <p>사무용품</p>
-          <p>{purchases.office ? (purchases.office + "").replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") : 0}</p>
+          <p>
+            {purchases.office
+              ? (purchases.office + "").replace(
+                  /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
+                  ","
+                )
+              : 0}원
+          </p>
         </div>
         <div className="static_unit">
           <p>교육비</p>
-          <p>{purchases.lecture ? (purchases.lecture + "").replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") : 0}</p>
+          <p>
+            {purchases.lecture
+              ? (purchases.lecture + "").replace(
+                  /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
+                  ","
+                )
+              : 0}원
+          </p>
         </div>
         <div className="static_unit">
           <p>출장비</p>
-          <p>{purchases.travel ? (purchases.travel + "").replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") : 0}</p>
+          <p>
+            {purchases.travel
+              ? (purchases.travel + "").replace(
+                  /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
+                  ","
+                )
+              : 0}원
+          </p>
         </div>
         <div className="static_unit">
           <p>기타</p>
-          <p>{purchases.etc ? (purchases.etc + "").replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") : 0}</p>
+          <p>
+            {purchases.etc
+              ? (purchases.etc + "").replace(
+                  /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
+                  ","
+                )
+              : 0}원
+          </p>
         </div>
       </div>
-
-
-      <div className="list_date">
-        <p>2022.03.07.</p>
-        <span>2건</span>
-      </div>
-      <PurchaseBox />
-      <PurchaseBox />
-      <div className="list_date">
-        <p>2022.03.07.</p>
-        <span>2건</span>
-      </div>
-      <PurchaseBox />
-      <PurchaseBox />
-
-      {Object.keys(purchases.data).length % 30 !== 0 ||
+      {purchases.data.length === 0 ? (
+        <div className="ment">등록된 지출이 없습니다</div>
+      ) : null}
+      {[
+        31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14,
+        13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0,
+      ].map((dateIndex) => {
+        return (
+          <>
+            <div
+              key={dateIndex}
+              className={
+                purchases.data.filter(
+                  (s) =>
+                    plusDate(new Date(s.purchaseDate), 0) ===
+                    plusDate(now, dateIndex)
+                ).length === 0
+                  ? "none"
+                  : "list_date"
+              }
+            >
+              <p className="flex_sb">
+                {plusDate(now, dateIndex)}.{plusDay(now, dateIndex)}
+              </p>
+              <span>
+                {
+                  purchases.data.filter(
+                    (s) =>
+                      plusDate(new Date(s.purchaseDate), 0) ===
+                      plusDate(now, dateIndex)
+                  ).length
+                }
+                건
+              </span>
+            </div>
+            {purchases.data
+              .filter(
+                (s) =>
+                  plusDate(new Date(s.purchaseDate), 0) === plusDate(now, dateIndex)
+              )
+              .map((data) => (
+                <PurchaseBox
+                  purchasePrice={data.purchasePrice}
+                  purpose={data.purpose}
+                  title={data.title}
+                  position={data.drafterPosition}
+                  nickname={data.drafterNickname}
+                  processStatus={data.processStatus}
+                  purchaseId={data.id}
+                  key={data.id}
+                  changeMode={changeMode}
+                  changePage={changePage}
+                />
+              ))}
+          </>
+        );
+      })}
+      {Object.keys(purchases.data).length % 10 !== 0 ||
       Object.keys(purchases.data).length === 0 ? null : (
         <div className="more_news more_it" onClick={() => getMore()}>
           <p className="theme_highlight2">더보기</p>

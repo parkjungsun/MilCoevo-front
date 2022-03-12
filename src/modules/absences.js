@@ -14,7 +14,7 @@ export const getAbsences = (token, groupId, search) => async (dispatch) => {
     dispatch({
       type: GET_ABSENCES,
       payload: {
-        index: search.index + 1,
+        index: result.data.length === 0 ? search.index : search.index + 1,
         frontDate: search.frontDate,
         rearDate: search.rearDate,
         processStatus: search.processStatus,

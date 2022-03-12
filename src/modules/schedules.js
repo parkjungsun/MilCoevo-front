@@ -11,13 +11,16 @@ export const addSchedule = (token, groupId, data) => async (dispatch) => {
 export const getSchedules = (token, groupId, search) => async (dispatch) => {
   const result = await schedulesApi.getSchedules(token, groupId, search);
   if (result.status === 200) {
-    dispatch({ type: GET_SCHEDULES, payload: {
-        index: search.index + 1,
+    dispatch({
+      type: GET_SCHEDULES,
+      payload: {
+        index: result.data.length === 0 ? search.index : search.index + 1,
         frontDate: search.frontDate,
         rearDate: search.rearDate,
         processStatus: search.processStatus,
-        data: result.data
-    } });
+        data: result.data,
+      },
+    });
   } else if (result.status === 401) {
     dispatch({ type: EXPIRE_TOKEN });
   } else {
@@ -43,7 +46,7 @@ export default function schedules(state = initialState, action) {
         frontDate: action.payload.frontDate,
         rearDate: action.payload.rearDate,
         processStatus: action.payload.processStatus,
-        data: state.data.concat(action.payload.data)
+        data: state.data.concat(action.payload.data),
       };
     case CLEAR_SCHEDULES:
       return initialState;

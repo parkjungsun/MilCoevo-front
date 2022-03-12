@@ -91,7 +91,7 @@ function AbsenceUpdate({ changeMode, changePage, page }) {
         ) : absence.drafterEmail === member.email ||
           member.rank === "LEADER" ? (
           <div className="button_form" onClick={() => onCancel()}>
-            <p>휴사 취소하기</p>
+            <p>휴가 취소하기</p>
           </div>
         ) : null}
         <div className="atag link_form" onClick={() => moveToPage()}>

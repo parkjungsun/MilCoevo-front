@@ -336,21 +336,32 @@ $theme_p_color2: #3e3e3e;
 
   .static_box {
     margin-top: 5px;
-    width: 100%;
+    width: 95%;
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  .full_unit {
+    width: 98% !important;
+    margin-right: 2% !important;
   } 
   .static_unit {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 48%;
+    margin-right: 2%;
+    display: inline-block;
     font-size: 14px;
+    border-bottom: 1px dashed $border_color;
+    p {
+      width: 50%;
+      display: inline-block;
+    }
+    p:nth-child(2) {
+      text-align: right;
+    }
+  }
+  .pur_price {
+    font-size: 12px;
     font-weight: 500;
-    min-width: 30px;
-    width: 17%;
-    padding: 5px;
-    background-color: $bg_color;
-    border-radius: 7px;
+    color: $theme_p_color;
   }
   .link_form {
     margin-bottom: 20px;

@@ -7,7 +7,7 @@ import PurchaseUpdate from "./PurchaseUpdate";
 function Purchase() {
   const [mode, setMode] = useState(1);
   const [page, setPage] = useState(null);
-  const [now, setNow] = useState(new Date());
+  const [now, setNow] = useState(new Date((new Date()).getFullYear(), (new Date()).getMonth(), 1));
   const [process, setProcess] = useState("SUGGESTED");
 
   const changeMode = (mod) => {

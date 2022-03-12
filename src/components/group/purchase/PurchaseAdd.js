@@ -206,7 +206,7 @@ function PurchaseAdd({ changeMode }) {
             </div>
           </div>
           {item.length === 0 ? (
-            <div className="pur_text tex_cen">상품이 없습니다</div>
+            <div className="pur_text tex_cen">-</div>
           ) : (
             item.map((i, index) => (
               <Item
@@ -215,6 +215,7 @@ function PurchaseAdd({ changeMode }) {
                 iprice={i.price}
                 iquantity={i.quantity}
                 removeItemBox={removeItemBox}
+                mode={true}
               />
             ))
           )}

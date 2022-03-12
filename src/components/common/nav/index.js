@@ -1,10 +1,6 @@
 import React from "react";
-import { useSelector } from "react-redux";
 
 function Nav({ navi, changeNavi }) {
-
-    const member = useSelector((state) => state.member);
-
     return (
         <div className="navigator">
            <p className={navi === 1 ? "nav_item nav_item_on" : "nav_item"} onClick={() => changeNavi(1)}>뉴스</p>
