@@ -14,6 +14,7 @@ import {
 } from "../../../modules/notice";
 import { getTime, plusDate } from "../../../utils/dateUtil";
 import { expireToken } from "../../../modules/token";
+import { getElementsByTagType } from "domutils";
 
 function NoticeUpdate({ changeMode, changePage, page }) {
   const dispatch = useDispatch();
@@ -32,9 +33,16 @@ function NoticeUpdate({ changeMode, changePage, page }) {
   const [content, setContent] = useState("");
   const [contentv, setContentv] = useState(true);
 
-  const onDelete = () => {
+  const onDelete = async () => {
     if (window.confirm("삭제 하시겠습니까?")) {
-      dispatch(delNotice(token, id, page));
+      const result = await dispatch(delNotice(token, id, page));
+      if(result.status === 200) {
+        moveToPage();
+      } else if(result.status === 401) {
+        expireToken();
+      } else {
+        alert("ERROR: del Notice");
+      }
     }
   };
 

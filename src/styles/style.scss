@@ -18,6 +18,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.hover_none {
+  cursor: default !important;
+  &:hover {
+    border: 1px solid $border_color !important;
+  }
+}
+
 h2,
 p,
 input {
@@ -648,4 +655,38 @@ input {
 
 .tex_cen {
   text-align: center !important;
+}
+
+.lrlc {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.lrlc_l {
+  padding: 6px 8px;
+  margin: 0px 2px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  background-color: $theme_color;
+  cursor: pointer;
+  &:hover {
+    background-color: $theme_color2;
+  }
+}
+
+.lrlc_r {
+  padding: 6px 8px;
+  margin: 0px 10px 0px 2px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  background-color: $theme_p_color;
+  cursor: pointer;
+  &:hover {
+    background-color: $theme_p_color2;
+  }
 }

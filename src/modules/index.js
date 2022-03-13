@@ -15,6 +15,7 @@ import purchases from "./purchases";
 import purchase from "./purchase";
 import notices from "./notices";
 import notice from "./notice";
+import groupmember from "./manage";
 
 const rootReducer = combineReducers({
   token,
@@ -30,7 +31,8 @@ const rootReducer = combineReducers({
   purchases,
   purchase,
   notices,
-  notice
+  notice,
+  groupmember
 });
 
 export function* rootSaga() {

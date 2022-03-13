@@ -7,6 +7,7 @@ $thmem_back: #c5e1df;
 $theme_p_color2: #3e3e3e;
 
 @media all and (max-width: 650px) {
+
   body {
     background-color: #fff;
   }
@@ -373,21 +374,26 @@ $theme_p_color2: #3e3e3e;
     margin-bottom: 20px;
   }
   .search_form {
-    width: 70%;
+    width: 40%;
     margin: 8px 0px;
-    padding: 3px 6px;
+    padding: 6px;
+    font-size: 14px;
+    border: 1px solid $theme_color;
+    border-right: 0px solid $theme_color;
   }
   .search_img {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 25px;
-    height: 25.5px;
-    background-color: $theme_color;
+    height: 28px;
+    border: 1px solid $theme_color;
+    border-left: 0px solid $theme_color;
+    background-color: #fff;
     img {
       margin: 0px;
-      width: 10px;
-      height: 10px;
+      width: 15px;
+      height: 15px;
     }
   }
 }
