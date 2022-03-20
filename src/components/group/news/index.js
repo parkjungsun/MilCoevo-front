@@ -18,7 +18,6 @@ function News() {
 
   const [mode, setMode] = useState(1);
   const [word, setWord] = useState("");
-  const [time, setTime] = useState("");
 
   const { id } = useParams();
   const token = useSelector((state) => state.token);
@@ -31,7 +30,6 @@ function News() {
   };
 
   const timeIndexHandler = async (e) => {
-    await setTime(e.target.value);
     dispatch(clearNews());
     dispatch(getNews(token, id, 0, e.target.value));
   };

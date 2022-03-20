@@ -57,8 +57,11 @@ function Register() {
     if(invitecode.length === 0) {
       onInvitecodeValidation(invitecode);
     } else if (invitecodev) {
-      await dispatch(confirmGroup(token, invitecode));
-      setStep(2);
+      const result = await dispatch(confirmGroup(token, invitecode));
+
+      if(result) {
+        setStep(2);
+      }
     } else {
       alert('입력값을 확인해주세요');
     }

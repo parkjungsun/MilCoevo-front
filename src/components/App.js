@@ -16,14 +16,14 @@ function App() {
     <>
       <Routes>
         <Route path="/group/:id" element={<Group />} />
-        <Route path="/group/create" element={<GroupCreate />} exact={true} />
-        <Route path="/group/register" element={<GroupRegister />} exact={true} />
-        <Route path="/member/:id/info" element={<UpdateMember />} exact={true} />
-        <Route path="/members" element={<Members />} exact={true} />
-        <Route path="/privacyExplain" element={<PrivacyExplain />} exact={true} />
-        <Route path="/useExplain" element={<UseExplain />} exact={true} />
-        <Route path="/register" element={<Register />} exact={true} />
-        <Route path="/login" element={<Login />} exact={true} />
+        <Route path="/group/create" element={<GroupCreate />} />
+        <Route path="/group/register" element={<GroupRegister />} />
+        <Route path="/member/:id/info" element={<UpdateMember />} />
+        <Route path="/members" element={<Members />} />
+        <Route path="/privacyExplain" element={<PrivacyExplain />} />
+        <Route path="/useExplain" element={<UseExplain />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/oauth/redirect/*" element={<Oauth />} />
       </Routes>
     </>

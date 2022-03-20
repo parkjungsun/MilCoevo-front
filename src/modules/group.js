@@ -26,11 +26,14 @@ export const confirmGroup = (token, inviteCode) => async (dispatch) => {
     const result = await groupApi.confirmGroup(token, inviteCode);
     if(result.status === 200) {
         dispatch({ type: GET_GROUP, paylaod: result.data });
+        return true;
     } else if(result.status === 401) {
         dispatch({ type: EXPIRE_TOKEN });
+        return false;
     } else {
         alert("존재하지 않는 그룹입니다");
         dispatch({ type: CLEAR_GROUP });
+        return false;
     }
 }
 
