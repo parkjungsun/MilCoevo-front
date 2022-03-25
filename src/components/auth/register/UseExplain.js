@@ -6,7 +6,7 @@ function UseExplain() {
     <>
       <div className="container">
         <div className="container_title abr">
-          <h2>MILINEWS</h2>
+          <h2>ROKANEWS</h2>
           <h3>이용약관</h3>
         </div>
         <Link to="/register" className="atag link_form">

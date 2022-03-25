@@ -70,7 +70,7 @@ function Login() {
     <>
       <div className="container">
         <div className="container_title abl">
-          <h2>MILINEWS</h2>
+          <h2>ROKANEWS</h2>
         </div>
         <a href={NAVER_AUTH_URL} className="atag social_login">
           <p>Naver 계정으로 로그인</p>

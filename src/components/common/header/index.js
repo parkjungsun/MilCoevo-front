@@ -30,7 +30,7 @@ function Header() {
   return (
     <div className="header">
       <div className="header_logo">
-        <p>MILINEWS</p>
+        <p>ROKANEWS</p>
       </div>
       <div className="header_info">
         <div className={group.groupName === "" ? "none" : "header_info_group"}>

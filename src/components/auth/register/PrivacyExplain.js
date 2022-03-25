@@ -6,7 +6,7 @@ function PrivacyExplain() {
     <>
       <div className="container">
         <div className="container_title abr">
-          <h2>MILINEWS</h2>
+          <h2>ROKANEWS</h2>
           <h3>개인정보 취급방침</h3>
         </div>
         <Link to="/register" className="atag link_form">

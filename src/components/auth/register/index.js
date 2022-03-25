@@ -75,7 +75,7 @@ function Register() {
     <>
       <div className="container">
         <div className="container_title abr">
-          <h2>MILINEWS</h2>
+          <h2>ROKANEWS</h2>
           <p className="explain_msg">
             계정을 만들면
             <Link to="/useExplain" className="atag theme_highlight">
