@@ -32,7 +32,7 @@ function Group() {
       dispatch(clearGroup());
       dispatch(clearMem());
     };
-  }, [token, dispatch]);
+  }, [token, id, dispatch]);
 
   if(group.groupName === "ERROR" || group.inviteCode === "ERROR") {
     return <Navigate to="/members" />;

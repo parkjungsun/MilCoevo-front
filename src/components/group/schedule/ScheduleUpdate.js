@@ -33,7 +33,7 @@ function ScheduleUpdate({ changeMode, changePage, page }) {
     return () => {
       dispatch(clearSchedule());
     };
-  }, [token, dispatch]);
+  }, [token, id, page, dispatch]);
 
   return (
     <div className="container noblur">

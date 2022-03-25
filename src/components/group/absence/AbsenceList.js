@@ -32,14 +32,14 @@ function AbsenceList({
     let next = nextDate(now);
     setNow(next);
 
-    const search = {
-      index: 0,
-      frontDate: frontYMD(next),
-      rearDate: rearYMD(next),
-      processStatus: process,
-    };
-    dispatch(clearAbsences());
-    dispatch(getAbsences(token, id, search));
+//    const search = {
+//      index: 0,
+//      frontDate: frontYMD(next),
+//      rearDate: rearYMD(next),
+//      processStatus: process,
+//    };
+//    dispatch(clearAbsences());
+//    dispatch(getAbsences(token, id, search));
   };
 
   const getMore = () => {
@@ -56,27 +56,27 @@ function AbsenceList({
     let prev = prevDate(now);
     setNow(prev);
 
-    const search = {
-      index: 0,
-      frontDate: frontYMD(prev),
-      rearDate: rearYMD(prev),
-      processStatus: process,
-    };
-    dispatch(clearAbsences());
-    dispatch(getAbsences(token, id, search));
+//    const search = {
+//      index: 0,
+//      frontDate: frontYMD(prev),
+//      rearDate: rearYMD(prev),
+//      processStatus: process,
+//    };
+//    dispatch(clearAbsences());
+//    dispatch(getAbsences(token, id, search));
   };
 
   const processHandler = async (e) => {
-    const search = {
-      index: 0,
-      frontDate: frontYMD(now),
-      rearDate: rearYMD(now),
-      processStatus: e.target.value,
-    };
+//    const search = {
+//      index: 0,
+//      frontDate: frontYMD(now),
+//      rearDate: rearYMD(now),
+//      processStatus: e.target.value,
+//    };
 
     setProcess(e.target.value);
-    dispatch(clearAbsences());
-    dispatch(getAbsences(token, id, search));
+//    dispatch(clearAbsences());
+//    dispatch(getAbsences(token, id, search));
   };
 
   useEffect(() => {
@@ -90,7 +90,7 @@ function AbsenceList({
     return () => {
       dispatch(clearAbsences());
     };
-  }, [token, dispatch]);
+  }, [token, id, now, process, dispatch]);
 
   return (
     <div className="info_container">

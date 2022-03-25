@@ -31,14 +31,14 @@ function ScheduleList({
     let next = nextDate(now);
     setNow(next);
 
-    const search = {
-      index: 0,
-      frontDate: frontYMD(next),
-      rearDate: rearYMD(next),
-      processStatus: process,
-    };
-    dispatch(clearSchedules());
-    dispatch(getSchedules(token, id, search));
+//    const search = {
+//      index: 0,
+//      frontDate: frontYMD(next),
+//      rearDate: rearYMD(next),
+//      processStatus: process,
+//    };
+//    dispatch(clearSchedules());
+//    dispatch(getSchedules(token, id, search));
   };
 
   const getMore = () => {
@@ -55,27 +55,27 @@ function ScheduleList({
     let prev = prevDate(now);
     setNow(prev);
 
-    const search = {
-      index: 0,
-      frontDate: frontYMD(prev),
-      rearDate: rearYMD(prev),
-      processStatus: process,
-    };
-    dispatch(clearSchedules());
-    dispatch(getSchedules(token, id, search));
+//    const search = {
+//      index: 0,
+//      frontDate: frontYMD(prev),
+//      rearDate: rearYMD(prev),
+//      processStatus: process,
+//    };
+//    dispatch(clearSchedules());
+//    dispatch(getSchedules(token, id, search));
   };
 
   const processHandler = async (e) => {
-    const search = {
-      index: 0,
-      frontDate: frontYMD(now),
-      rearDate: rearYMD(now),
-      processStatus: e.target.value,
-    };
+    //const search = {
+    //  index: 0,
+    //  frontDate: frontYMD(now),
+    //  rearDate: rearYMD(now),
+    //  processStatus: e.target.value,
+    //};
 
     setProcess(e.target.value);
-    dispatch(clearSchedules());
-    dispatch(getSchedules(token, id, search));
+    //dispatch(clearSchedules());
+    //dispatch(getSchedules(token, id, search));
   };
 
   useEffect(() => {
@@ -89,7 +89,7 @@ function ScheduleList({
     return () => {
       dispatch(clearSchedules());
     };
-  }, [token, dispatch]);
+  }, [token, id, now, process, dispatch]);
 
   return (
     <div className="info_container">

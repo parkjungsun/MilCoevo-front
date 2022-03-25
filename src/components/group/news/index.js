@@ -59,13 +59,13 @@ function News() {
   useEffect(() => {
     if (token !== "" && token !== "NONE") {
       dispatch(getKeywords(token, id));
-      dispatch(getNews(token, id, news.index, ""));
+      dispatch(getNews(token, id, 0, ""));
     }
     return () => {
       dispatch(clearKeywords());
       dispatch(clearNews());
     };
-  }, [token, dispatch]);
+  }, [token, id, dispatch]);
 
   const changeMode = (mod) => {
     setMode(mod);

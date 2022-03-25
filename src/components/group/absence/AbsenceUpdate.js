@@ -58,7 +58,7 @@ function AbsenceUpdate({ changeMode, changePage, page }) {
     return () => {
       dispatch(clearAbsence());
     };
-  }, [token, dispatch]);
+  }, [token, id, page, dispatch]);
 
   return (
     <div className="container noblur">

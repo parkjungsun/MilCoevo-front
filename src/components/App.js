@@ -25,6 +25,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/oauth/redirect/*" element={<Oauth />} />
+        <Route path="/*" element={<Login />}/>
       </Routes>
     </>
   );

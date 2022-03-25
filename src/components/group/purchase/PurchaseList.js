@@ -31,14 +31,14 @@ function PurchaseList({
     let next = nextMonth(now);
     setNow(next);
 
-    const search = {
-      index: 0,
-      frontDate: frontMonth(next),
-      rearDate: rearMonth(next),
-      processStatus: process,
-    };
-    dispatch(clearPurchases());
-    dispatch(getPurchases(token, id, search));
+//    const search = {
+//      index: 0,
+//      frontDate: frontMonth(next),
+//      rearDate: rearMonth(next),
+//      processStatus: process,
+//    };
+//    dispatch(clearPurchases());
+//    dispatch(getPurchases(token, id, search));
   };
 
   const getMore = () => {
@@ -55,27 +55,27 @@ function PurchaseList({
     let prev = prevMonth(now);
     setNow(prev);
 
-    const search = {
-      index: 0,
-      frontDate: frontMonth(prev),
-      rearDate: rearMonth(prev),
-      processStatus: process,
-    };
-    dispatch(clearPurchases());
-    dispatch(getPurchases(token, id, search));
+//    const search = {
+//      index: 0,
+//      frontDate: frontMonth(prev),
+//      rearDate: rearMonth(prev),
+//      processStatus: process,
+//    };
+//    dispatch(clearPurchases());
+//    dispatch(getPurchases(token, id, search));
   };
 
   const processHandler = async (e) => {
-    const search = {
-      index: 0,
-      frontDate: frontMonth(now),
-      rearDate: rearMonth(now),
-      processStatus: e.target.value,
-    };
+    //const search = {
+    //  index: 0,
+    //  frontDate: frontMonth(now),
+    //  rearDate: rearMonth(now),
+    //  processStatus: e.target.value,
+    //};
 
     setProcess(e.target.value);
-    dispatch(clearPurchases());
-    dispatch(getPurchases(token, id, search));
+    //dispatch(clearPurchases());
+    //dispatch(getPurchases(token, id, search));
   };
 
   useEffect(() => {
@@ -89,7 +89,7 @@ function PurchaseList({
     return () => {
       dispatch(clearPurchases());
     };
-  }, [token, dispatch]);
+  }, [token, id, now, process, dispatch]);
 
   return (
     <div className="info_container">

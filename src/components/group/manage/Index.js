@@ -37,14 +37,14 @@ function ManageList() {
 
   useEffect(() => {
     const search = {
-        index: groupmember.index,
-        searchName: groupmember.searchName
+        index: 0,
+        searchName: ""
     };
     dispatch(getGroupMembers(token, id, search));
     return () => {
         dispatch(clearGroupMember());
     };
-  }, [token, dispatch]);
+  }, [token, id, dispatch]);
 
   return (
     <div className="info_container">

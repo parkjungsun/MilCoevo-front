@@ -106,7 +106,7 @@ function UpdateMember() {
       dispatch(clearMem());
       dispatch(clearGroup());
     };
-  }, [token, dispatch]);
+  }, [token, id, dispatch]);
 
   if (member.email === "" && group.groupName === "") {
     return (

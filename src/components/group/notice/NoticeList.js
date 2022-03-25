@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { clearNotices, getNotices } from "../../../modules/notices";
@@ -11,11 +11,12 @@ function NoticeList({ changeMode, changePage, stitle, setStitle }) {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.token);
   const notices = useSelector((state) => state.notices);
+  const [tmp, setTmp] = useState(stitle);
 
   const { id } = useParams();
 
   const onSearchHandler = (event) => {
-    setStitle(event.target.value.replace(/[^ㄱ-ㅎ|가-힣|a-z|A-Z|0-9\s]/g, ""));
+    setTmp(event.target.value.replace(/[^ㄱ-ㅎ|가-힣|a-z|A-Z|0-9\s]/g, ""));
   };
 
   const getMore = () => {
@@ -27,12 +28,13 @@ function NoticeList({ changeMode, changePage, stitle, setStitle }) {
   };
 
   const onSearch = () => {
-    const search = {
-      index: 0,
-      searchTitle: stitle,
-    };
-    dispatch(clearNotices());
-    dispatch(getNotices(token, id, search));
+//    const search = {
+//      index: 0,
+//      searchTitle: stitle,
+//    };
+//    dispatch(clearNotices());
+//    dispatch(getNotices(token, id, search));
+    setStitle(tmp);
   };
 
   useEffect(() => {
@@ -44,7 +46,7 @@ function NoticeList({ changeMode, changePage, stitle, setStitle }) {
     return () => {
       dispatch(clearNotices());
     };
-  }, [token, dispatch]);
+  }, [token, id, stitle, dispatch]);
 
   return (
     <div className="info_container">
@@ -55,7 +57,7 @@ function NoticeList({ changeMode, changePage, stitle, setStitle }) {
             type="text"
             placeholder="검색어를 입력하세요"
             maxLength="20"
-            value={stitle}
+            value={tmp}
             onChange={onSearchHandler}
           />
           <div className="search_img" onClick={() => onSearch()}>

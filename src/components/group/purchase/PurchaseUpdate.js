@@ -55,7 +55,7 @@ function PurchaseUpdate({ changeMode, changePage, page }) {
     return () => {
       dispatch(clearPurchase());
     };
-  }, [token, dispatch]);
+  }, [token, id, page, dispatch]);
 
   return (
     <div className="container noblur">

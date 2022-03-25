@@ -14,7 +14,6 @@ import {
 } from "../../../modules/notice";
 import { getTime, plusDate } from "../../../utils/dateUtil";
 import { expireToken } from "../../../modules/token";
-import { getElementsByTagType } from "domutils";
 
 function NoticeUpdate({ changeMode, changePage, page }) {
   const dispatch = useDispatch();
@@ -90,7 +89,7 @@ function NoticeUpdate({ changeMode, changePage, page }) {
     return () => {
       dispatch(clearNotice());
     };
-  }, [token, dispatch]);
+  }, [token, id, page, dispatch]);
 
   return (
     <div className="container noblur">
