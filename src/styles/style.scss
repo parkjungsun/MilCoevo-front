@@ -6,6 +6,11 @@ $border_color: #dcdde0;
 $thmem_back: #c5e1df;
 $theme_p_color2: #3e3e3e;
 
+html{
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
 body {
   display: flex;
   flex-direction: column;
