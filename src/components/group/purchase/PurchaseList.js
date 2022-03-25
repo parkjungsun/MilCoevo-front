@@ -123,7 +123,7 @@ function PurchaseList({
           <p>
             {purchases.total
               ? (purchases.total + "").replace(
-                  /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
+                /\B(?=(\d{3})+(?!\d))/g,
                   ","
                 )
               : 0}원
@@ -134,7 +134,7 @@ function PurchaseList({
           <p>
             {purchases.office
               ? (purchases.office + "").replace(
-                  /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
+                /\B(?=(\d{3})+(?!\d))/g,
                   ","
                 )
               : 0}원
@@ -145,7 +145,7 @@ function PurchaseList({
           <p>
             {purchases.lecture
               ? (purchases.lecture + "").replace(
-                  /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
+                /\B(?=(\d{3})+(?!\d))/g,
                   ","
                 )
               : 0}원
@@ -156,7 +156,7 @@ function PurchaseList({
           <p>
             {purchases.travel
               ? (purchases.travel + "").replace(
-                  /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
+                /\B(?=(\d{3})+(?!\d))/g,
                   ","
                 )
               : 0}원
@@ -167,7 +167,7 @@ function PurchaseList({
           <p>
             {purchases.etc
               ? (purchases.etc + "").replace(
-                  /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
+                /\B(?=(\d{3})+(?!\d))/g,
                   ","
                 )
               : 0}원

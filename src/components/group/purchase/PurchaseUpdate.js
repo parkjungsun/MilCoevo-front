@@ -108,7 +108,7 @@ function PurchaseUpdate({ changeMode, changePage, page }) {
                   items.reduce((sum, i) => {
                     return sum + i.price * i.quantity;
                   }, 0) + ""
-                ).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
+                ).replace(/\B(?=(\d{3})+(?!\d))/g, ",")
               )}{" "}
               원
             </span>

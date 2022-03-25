@@ -49,7 +49,7 @@ function PurchaseBox({
             <br />
             <span className="pur_price">
               {purchasePrice ? (purchasePrice + "").replace(
-                /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
+                /\B(?=(\d{3})+(?!\d))/g,
                 ","
               ) : 0}
               원

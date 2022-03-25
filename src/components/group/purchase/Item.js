@@ -13,10 +13,10 @@ function Item({iname, iprice, iquantity, removeItemBox, mode}) {
         <span>{iname}</span>
       </div>
       <div className="pur_two">
-        <span>{(iquantity+"").replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}</span>
+        <span>{iquantity.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
       </div>
       <div className="pur_three">
-        <span>{(iprice+"").replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}</span>
+        <span>{iprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
       </div>
       {mode ? 
       <img src={delImg} alt="" className="del_img" />
