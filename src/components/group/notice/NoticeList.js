@@ -74,8 +74,8 @@ function NoticeList({ changeMode, changePage, stitle, setStitle }) {
             noticeId={i.id}
             title={i.title}
             date={i.createdDate}
-            position={i.writerNickname}
-            nickname={i.writerPosition}
+            position={i.writerPosition}
+            nickname={i.writerNickname}
             changeMode={changeMode}
             changePage={changePage}
           />
